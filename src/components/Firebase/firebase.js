@@ -57,6 +57,7 @@ class Firebase {
 
     doGetTodos = async uid => {
         let doc = await this.db.collection('users').doc(uid).get()
+        console.log(doc.data().todos)
         if(doc) return doc.data().todos
     }
 }
