@@ -35,6 +35,7 @@ class SignUpFormBase extends Component {
                 this.setState({ ...INITIAL_STATE })
                 console.log('Creating document in db for user.uid', authUser.user.uid )
                 this.props.firebase.doCreateNewInstanceBasedOnAuthUid(authUser.user.uid)
+                console.log({user: authUser.user.uid})
                 localStorage.setItem('uid', authUser.user.uid)
                 this.props.history.push(ROUTES.HOME)
             })

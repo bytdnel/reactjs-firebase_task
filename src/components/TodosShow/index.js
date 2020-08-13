@@ -12,6 +12,7 @@ const TodoList = ({promise}) => {
         })
       })
     if (!todos) return(<p>Ждем данные из Firebase</p>)
+    if (promise == null) return([<div>Нужно что-то написать!</div>])
     return (
         <ul>
             {todos.map(todo => <li>{todo.todo}</li>)}
@@ -46,11 +47,6 @@ const TodoList = ({promise}) => {
 //         </div>
 //     )
 // }
-
-let setTodos = async (fun, uid, toAddTodo) => {
-    let todos = await fun(uid)
-    if(todos) return todos
-}
 
 
 class TodosShowBase extends Component {

@@ -49,16 +49,17 @@ class Firebase {
         }
     }
 
-    doAddTodo = (todo, uid) => {
+    doAddTodo = (todo) => {
+        let uid = localStorage.getItem('uid')
         this.db.collection('users').doc(uid).update({
             todos: this.db_func.FieldValue.arrayUnion(todo)
         })
     }
 
-    doGetTodos = async uid => {
+    doGetTodos = async () => {
+        let uid = localStorage.getItem('uid')
         let doc = await this.db.collection('users').doc(uid).get()
-        console.log(doc.data().todos)
-        if(doc) return doc.data().todos
+        return doc.data().todos
     }
 }
 
